@@ -3,180 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fluxi Vault - Próximamente</title>
+    <title>Fluxi Vault - v1.0.0</title>
     
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
     <style>
         body {
             font-family: 'Inter', sans-serif;
             background-color: #020617;
             color: #f8fafc;
-            overflow-x: hidden;
             margin: 0;
         }
-
         .font-mono { font-family: 'JetBrains Mono', monospace; }
         
-        /* Animación de "respiración" para el estado Próximamente */
-        .glow-pulse {
-            animation: pulse-glow 3s ease-in-out infinite;
+        #particle-canvas {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0; pointer-events: none;
         }
 
-        @keyframes pulse-glow {
-            0%, 100% { opacity: 0.5; filter: blur(20px); }
-            50% { opacity: 1; filter: blur(40px); }
-        }
+        .content-wrapper { position: relative; z-index: 10; }
 
         .floating {
             animation: float 6s ease-in-out infinite;
         }
-
         @keyframes float {
-            0% { transform: translateY(0px); }
+            0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
         }
 
-        #particle-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .content-wrapper {
-            position: relative;
-            z-index: 10;
-        }
-
-        /* Estilo de la "Bóveda" */
-        .vault-border {
-            border: 1px solid rgba(6, 182, 212, 0.2);
-            box-shadow: inset 0 0 20px rgba(6, 182, 212, 0.05);
-        }
+        /* Estilo para los enlaces dentro del Markdown */
+        .markdown-body a { color: #22d3ee; text-decoration: underline; }
     </style>
 </head>
-<body>
+<body class="min-h-screen">
 
     <canvas id="particle-canvas"></canvas>
 
-    <div class="content-wrapper min-h-screen flex flex-col">
+    <div class="content-wrapper flex flex-col min-h-screen">
         
         <nav class="fixed w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/50">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-center justify-between h-16">
-                    <span class="font-mono text-xl font-bold text-cyan-400 tracking-tighter">
-                        &lt;VAULT /&gt;
-                    </span>
-                    <div class="hidden md:block">
-                        <div class="ml-10 flex items-baseline space-x-4">
-                            <a href="https://fluxionics.github.io" class="hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors text-white">Inicio</a>
-                            <a href="https://fluxionics.github.io/contacto.html" class="hover:bg-cyan-500 hover:text-black border border-cyan-500 text-cyan-400 px-4 py-2 rounded-md text-sm font-medium transition-all">Contactar</a>
-                        </div>
-                    </div>
+            <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+                <span class="font-mono text-xl font-bold text-cyan-400">&lt;VAULT /&gt;</span>
+                <div class="space-x-4">
+                    <a href="https://fluxionics.github.io" class="text-white hover:text-cyan-400 text-sm transition-colors">Inicio</a>
+                    <a href="https://fluxionics.github.io/contacto.html" class="text-white hover:text-cyan-400 text-sm transition-colors">Contacto</a>
                 </div>
             </div>
         </nav>
 
-        <section class="flex-grow flex items-center justify-center pt-20 px-4">
-            <div class="max-w-2xl w-full text-center">
+        <main class="pt-32 pb-20 px-4 flex flex-col items-center">
+            
+            <div class="text-center mb-12">
+                <img src="https://imgur.com/pxjxVqC.png" alt="Logo" class="h-40 w-auto mx-auto floating mb-6 drop-shadow-[0_0_20px_rgba(6,182,212,0.3)]">
+                <h1 class="text-5xl md:text-6xl font-extrabold mb-2">Fluxi <span class="text-cyan-400">Vault</span></h1>
+                <p class="text-cyan-500 font-mono tracking-widest uppercase text-sm">Versión 1.0.0 disponible</p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 mb-16">
+                <a href="https://drive.google.com/uc?export=download&id=11nmyBfLMD4DpX8npttuHqD5N-Mw90Ae9" 
+                   class="bg-cyan-500 hover:bg-cyan-400 text-black font-bold py-3 px-10 rounded-full transition-all transform hover:scale-105 shadow-lg shadow-cyan-500/20 flex items-center justify-center">
+                   <span class="mr-2 text-xl">⬇️</span> Descargar Ahora
+                </a>
                 
-                <div class="relative inline-block mb-12">
-                    <div class="absolute inset-0 bg-cyan-500/20 rounded-full glow-pulse"></div>
-                    
-                    <img 
-                        src="https://imgur.com/pxjxVqC.png" 
-                        alt="Logo Fluxionics" 
-                        class="relative h-40 md:h-52 w-auto mx-auto floating drop-shadow-[0_0_15px_rgba(6,182,212,0.4)]"
-                    />
-                </div>
-
-                <h1 class="text-6xl md:text-7xl font-extrabold text-white mb-6 tracking-tighter">
-                    Fluxi <span class="text-cyan-400">Vault</span>
-                </h1>
-
-                <div class="inline-block vault-border bg-slate-900/40 backdrop-blur-md px-8 py-4 rounded-2xl mb-8">
-                    <p class="text-2xl md:text-3xl font-mono text-cyan-500 uppercase tracking-[0.3em] animate-pulse">
-                        Próximamente
-                    </p>
-                </div>
-
-                <p class="text-slate-400 text-lg md:text-xl max-w-lg mx-auto leading-relaxed">
-                    Estamos construyendo el lugar más seguro para tus datos. <br>
-                    La próxima evolución de <span class="text-white font-semibold">Fluxionics</span> está en camino.
-                </p>
-
-                <div class="mt-12 max-w-xs mx-auto h-1 bg-slate-800 rounded-full overflow-hidden">
-                    <div class="h-full bg-cyan-500 w-1/3 shadow-[0_0_10px_#06b6d4]"></div>
-                </div>
-                <p class="mt-4 text-xs font-mono text-slate-600 uppercase">Sistema encriptando...</p>
-
+                <a href="#documentacion" 
+                   class="border-2 border-slate-700 hover:border-cyan-500 text-white font-bold py-3 px-10 rounded-full transition-all flex items-center justify-center">
+                   <span class="mr-2 text-xl">📄</span> Documentación
+                </a>
             </div>
-        </section>
 
-        <div class="mt-auto border-t border-slate-800/50 bg-black/40 backdrop-blur-md py-8">
-            <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center opacity-50">
-                <div class="font-mono text-xs text-slate-500 mb-4 md:mb-0">
-                    SISTEMA DE ALMACENAMIENTO SEGURO // 2024
+            <div id="documentacion" class="max-w-3xl w-full bg-slate-900/50 backdrop-blur-md border border-slate-800 rounded-2xl p-8 shadow-2xl">
+                <div class="flex items-center mb-6 border-b border-slate-800 pb-4">
+                    <h2 class="text-2xl font-bold text-cyan-400">README.md</h2>
                 </div>
-                <div class="flex space-x-6 items-center">
-                    <span class="font-bold tracking-widest text-cyan-900">FLUXIONICS VAULT</span>
+                
+                <div id="markdown-container" class="prose prose-invert max-w-none markdown-body">
+                    <p class="text-slate-500 animate-pulse text-center">Leyendo documentación...</p>
                 </div>
             </div>
-        </div>
 
+        </main>
+
+        <footer class="mt-auto py-8 border-t border-slate-800/50 text-center opacity-50">
+            <p class="text-xs font-mono">FLUXIONICS VAULT // PROTECTING YOUR DATA</p>
+        </footer>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const canvas = document.getElementById('particle-canvas');
-            const ctx = canvas.getContext('2d');
-            
-            const resize = () => {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            };
-            window.addEventListener('resize', resize);
-            resize();
-
-            const particles = [];
-            for(let i=0; i<50; i++) {
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        function init() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles = [];
+            for(let i=0; i<60; i++) {
                 particles.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
-                    size: Math.random() * 2 + 0.5,
-                    speedX: (Math.random() - 0.5) * 0.5,
-                    speedY: (Math.random() - 0.5) * 0.5,
-                    opacity: Math.random() * 0.5
+                    vx: (Math.random() - 0.5) * 0.3,
+                    vy: (Math.random() - 0.5) * 0.3,
+                    size: Math.random() * 2
                 });
             }
+        }
+        function animate() {
+            ctx.clearRect(0,0,canvas.width, canvas.height);
+            ctx.fillStyle = '#06b6d4';
+            particles.forEach(p => {
+                p.x += p.vx; p.y += p.vy;
+                if(p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if(p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                ctx.globalAlpha = 0.3;
+                ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI*2); ctx.fill();
+            });
+            requestAnimationFrame(animate);
+        }
+        window.addEventListener('resize', init);
+        init(); animate();
 
-            function draw() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.fillStyle = '#06b6d4';
-                
-                particles.forEach(p => {
-                    p.x += p.speedX;
-                    p.y += p.speedY;
-
-                    if(p.x < 0 || p.x > canvas.width) p.speedX *= -1;
-                    if(p.y < 0 || p.y > canvas.height) p.speedY *= -1;
-
-                    ctx.globalAlpha = p.opacity;
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                    ctx.fill();
-                });
-                requestAnimationFrame(draw);
-            }
-            draw();
-        });
+        // Cargar README.md
+        fetch('README.md')
+            .then(res => res.text())
+            .then(text => {
+                document.getElementById('markdown-container').innerHTML = marked.parse(text);
+            })
+            .catch(() => {
+                document.getElementById('markdown-container').innerHTML = '<p class="text-red-400">Crea un archivo llamado README.md para ver el contenido aquí.</p>';
+            });
     </script>
 </body>
 </html>
