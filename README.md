@@ -1,45 +1,53 @@
-# 🛡️ FLUXI VAULT
+# 🔐 FLUXI VAULT PRO - Quantum Security Edition
 
-**FLUXI VAULT** es una herramienta de seguridad avanzada de **Código Cerrado** diseñada para centralizar la gestión de credenciales, protección de identidad y auditoría de redes locales. Todo el procesamiento ocurre de forma local, garantizando que el usuario mantenga el control total sobre su información.
+**Fluxi Vault Pro** es una plataforma de ciberseguridad avanzada diseñada para la protección de activos digitales, identidades sintéticas y archivos sensibles. Este software opera bajo el principio de **Privacidad Absoluta**, asegurando que el acceso sea exclusivo al propietario de la Clave Maestra.
+
+> **ESTADO DEL SOFTWARE:** Código Cerrado / Distribución Standalone (.exe).
+
+## 🛡️ Arquitectura de Seguridad Quantum-Ready
+
+El núcleo del sistema utiliza una arquitectura de cifrado en cascada para garantizar que los datos sean indescifrables incluso ante intentos de computación avanzada:
+
+* **Cifrado en Capas (Triple Shield):** Cada dato es procesado secuencialmente por **ChaCha20Poly1305** -> **AES-256 GCM** -> **ChaCha20Poly1305**.
+* **Hardware-Binding:** El sistema genera una semilla única basada en el `HWID` (UUID del hardware) del equipo, impidiendo que la base de datos sea exportada y abierta en otro PC.
+* **Derivación de Clave:** Implementación de `PBKDF2HMAC` con algoritmo **SHA-512** y un ciclo de **600,000 iteraciones** para neutralizar ataques de fuerza bruta modernos.
+
+## 🚀 Módulos y Capacidades
+
+### 1. Gestión de Identidades (Quantum Identity)
+* **Identidades Sintéticas:** Generación instantánea de perfiles con nombres, CURP, RFC, NSS y correos electrónicos funcionales.
+* **Protección Financiera:** Simulación de tarjetas de crédito (Visa/Mastercard), CLABE interbancaria y saldos aleatorios para pruebas de seguridad o anonimato.
+* **Datos Vehiculares:** Generación de registros de autos y placas vinculadas a la identidad.
+
+### 2. Bóveda Digital (Vault)
+* **Categorización Inteligente:** Organización de credenciales por Redes Sociales, Bancos, Trabajo, etc.
+* **Medidor de Fuerza:** Análisis en tiempo real de la seguridad de tus contraseñas mediante puntuación de 0 a 100.
+* **Generador Aleatorio:** Creación de claves de hasta 64 caracteres con selección de símbolos, números y mayúsculas.
+
+### 3. Black Hole Storage
+* **Ocultación Cruda:** Los archivos se extraen de su ubicación original y se almacenan en la "Shadow Storage".
+* **Hasheo de Archivos:** El nombre original se reemplaza por un hash SHA-256 de 20 caracteres, haciendo imposible identificar el contenido sin el software.
+
+### 4. Esteganografía de Firma Digital
+* Vínculo de mensajes cifrados a la "huella digital" (hash) de archivos de imagen (PNG, JPG, JPEG).
+* A diferencia de la esteganografía tradicional, no altera ni un solo bit de la imagen original, evitando detecciones forenses.
+
+## ⚠️ Protocolos de Emergencia (Anti-Forense)
+
+* **Modo Decoy (Señuelo):** Activa una base de datos "fantasma" con información falsa si se introduce la clave de acceso secundaria.
+* **Protocolo de Pánico:** Si se introduce la clave de pánico configurada, el programa ejecuta `shutil.rmtree` sobre todo el directorio raíz de datos, eliminando la evidencia en milisegundos.
+* **Ghost Mode:** Pestaña de secretos de "Acceso Único" protegida por la clase `QuantumCrypto`.
+
+## 📋 Detalles de Implementación
+* **Directorio Base:** `%LOCALAPPDATA%\WinSystemAuthCore`.
+* **Base de Datos:** SQLite v3 con integridad referencial.
+* **Librerías Core:** `Cryptography.hazmat`, `CustomTkinter`.
 
 ---
 
-## 🚀 Funciones Incluidas
-
-### 🔑 Gestión de Credenciales (Bóveda)
-* **Cifrado AES-256:** Almacenamiento seguro de cuentas bajo estándares bancarios.
-* **Generador de Contraseñas:** Creación de claves de alta seguridad directamente desde el gestor.
-* **Persistencia Segura:** Base de datos cifrada localmente.
-
-### 👤 Suite de Identidad Falsa
-* **Generador de Datos:** Crea identidades completas (Nombre, CURP, RFC) para proteger tu privacidad en registros.
-* **Validación de Tarjetas:** Generación de números de tarjeta basados en el **Algoritmo de Luhn**.
-* **Panel Editable:** Control total sobre los datos generados para ajustes manuales.
-
-### 🌐 Auditoría de Red y Privacidad
-* **Rastreador de IP:** Módulo independiente para obtener geolocalización, ISP y datos de red de cualquier IP.
-* **Cifrado de Peticiones:** Ofuscación de cabeceras para evitar el rastreo de actividad por parte de terceros.
-* **Correo Desechable:** Acceso a bandejas de entrada temporales para evitar el spam.
+## ✒️ Créditos y Autoría
+Este software es una propiedad intelectual de:
+* **Fluxionics - Guillermo**
 
 ---
-
-## 📦 Distribución y Uso
-
-Este proyecto se distribuye exclusivamente en formato ejecutable (`.exe`). 
-
-1. **Seguridad:** No requiere conexión a la nube; todos los datos se quedan en tu carpeta local.
-2. **Portabilidad:** Diseñado para ejecutarse en entornos Windows sin necesidad de instalación previa de Python.
-3. **Emergencia:** Incluye un **Botón de Pánico (F12)** que cierra la suite instantáneamente.
-
----
-
-## ⚖️ Licencia y Propiedad
-
-**PROYECTO DE CÓDIGO CERRADO / PROPRIETARY SOFTWARE**
-
-© 2025 FLUXI VAULT. Todos los derechos reservados. 
-
-Queda estrictamente prohibida la ingeniería inversa, descompilación, distribución no autorizada o modificación del archivo ejecutable. Este software se proporciona "tal cual", enfocado en la privacidad del usuario final.
-
----
-*Protección y privacidad en un solo lugar.*
+**ADVERTENCIA:** El uso indebido de este software es responsabilidad del usuario. **Fluxionics** no se hace responsable por la pérdida de claves maestras, ya que al ser un sistema de conocimiento cero, no existe forma de recuperar los datos sin la contraseña original.
