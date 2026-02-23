@@ -2,7 +2,7 @@
 
 **Fluxi Vault Pro** es una plataforma de ciberseguridad avanzada diseñada para la protección de activos digitales, identidades sintéticas y archivos sensibles. Este software opera bajo el principio de **Privacidad Absoluta**, asegurando que el acceso sea exclusivo al propietario de la Clave Maestra.
 
-> **ESTADO DEL SOFTWARE:** Código Cerrado / Distribución Standalone (.exe).
+> **ESTADO DEL SOFTWARE:** Código Abierto / Distribución Standalone (.exe).
 
 ## 🛡️ Arquitectura de Seguridad Quantum-Ready
 
